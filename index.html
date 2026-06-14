@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Andrew Gardner — Request a Callback</title>
+<meta name="description" content="Tell us what you need and we'll text you right back. Fast, friendly responses from Andrew Gardner." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e6e9ef;
+    --primary:#2563eb; --primary-dark:#1d4ed8;
+    --bg:#f6f7f9; --card:#ffffff; --accent:#38bdf8;
+    --ok:#16a34a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;z-index:10;background:rgba(246,247,249,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.01em}
+  .brand .dot{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px}
+  .nav-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--muted)}
+
+  .hero{background:linear-gradient(160deg,#0f223f 0%,#13294d 55%,#1b3a6b 100%);color:#fff;padding:72px 0 120px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;background:radial-gradient(circle,rgba(56,189,248,.35),transparent 70%);filter:blur(10px)}
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:#bfe0ff;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);padding:6px 12px;border-radius:999px;margin-bottom:20px}
+  .hero h1{font-size:clamp(30px,5vw,48px);font-weight:800;line-height:1.1;letter-spacing:-.02em;max-width:640px}
+  .hero p.sub{margin-top:18px;font-size:clamp(16px,2.2vw,19px);color:#cdd9ec;max-width:560px}
+  .trust{margin-top:28px;display:flex;flex-wrap:wrap;gap:18px}
+  .trust span{display:flex;align-items:center;gap:8px;font-size:14px;color:#dbe6f6;font-weight:500}
+  .trust svg{flex:none}
+
+  .layout{margin-top:-72px;position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start;padding-bottom:64px}
+  @media(max-width:880px){.layout{grid-template-columns:1fr;margin-top:-64px}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px -24px rgba(15,23,42,.28)}
+  .form-card{padding:30px}
+  .form-card h2{font-size:21px;font-weight:700;letter-spacing:-.01em}
+  .form-card .lede{color:var(--muted);font-size:14.5px;margin-top:6px;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px}
+  .req{color:var(--primary)}
+  input,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#fbfcfe;border:1px solid #dde3ec;border-radius:11px;padding:12px 14px;transition:border .15s,box-shadow .15s}
+  input:focus,textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.14);background:#fff}
+  textarea{resize:vertical;min-height:96px}
+
+  .consent{display:flex;gap:11px;align-items:flex-start;background:#f4f8ff;border:1px solid #dbe7ff;border-radius:12px;padding:13px 14px;margin:6px 0 20px}
+  .consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--primary)}
+  .consent label{font-weight:400;font-size:12.5px;color:#41506a;line-height:1.5;margin:0}
+
+  button.submit{width:100%;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:15.5px;color:#fff;background:var(--primary);padding:14px 18px;border-radius:12px;transition:background .15s,transform .05s;box-shadow:0 10px 24px -10px rgba(37,99,235,.7)}
+  button.submit:hover{background:var(--primary-dark)}
+  button.submit:active{transform:translateY(1px)}
+  .fineprint{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px}
+
+  .info{padding:8px 4px}
+  .info h3{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:14px}
+  .step{display:flex;gap:14px;margin-bottom:20px}
+  .step .n{flex:none;width:34px;height:34px;border-radius:10px;background:#eaf1ff;color:var(--primary);font-weight:800;display:grid;place-items:center;font-size:15px}
+  .step h4{font-size:15.5px;font-weight:700}
+  .step p{font-size:14px;color:var(--muted);margin-top:2px}
+  .callout{margin-top:8px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px;font-size:14px;color:#41506a}
+  .callout strong{color:var(--ink)}
+
+  .ok-msg{display:none;text-align:center;padding:26px 10px}
+  .ok-msg .check{width:56px;height:56px;border-radius:50%;background:#e7f7ed;color:var(--ok);display:grid;place-items:center;margin:0 auto 14px}
+  .ok-msg h2{font-size:21px}
+  .ok-msg p{color:var(--muted);font-size:14.5px;margin-top:6px}
+
+  footer{border-top:1px solid var(--line);background:#fff}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;padding:30px 0;font-size:13.5px;color:var(--muted)}
+  .foot a{color:var(--muted)}
+  .foot .fb{font-weight:700;color:var(--ink)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot">AG</span> Andrew Gardner</div>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">● Typically replies within minutes</span>
+    <h1>Tell us what you need. We'll text you right back.</h1>
+    <p class="sub">Share a few details and we'll follow up by text to answer questions, confirm details, and get you scheduled — no phone tag.</p>
+    <div class="trust">
+      <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#7ee0a0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Fast, friendly replies</span>
+      <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3Z" stroke="#7ee0a0" stroke-width="2" stroke-linejoin="round"/></svg> Your info stays private</span>
+      <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8v5l3 2" stroke="#7ee0a0" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#7ee0a0" stroke-width="2"/></svg> Reply STOP anytime</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="layout">
+    <!-- FORM -->
+    <div class="card form-card">
+      <div id="formView">
+        <h2>Request a callback</h2>
+        <p class="lede">Fill this out and we'll text you back shortly.</p>
+        <form id="leadForm" novalidate>
+          <div class="field">
+            <label for="name">Full name <span class="req">*</span></label>
+            <input id="name" name="name" type="text" autocomplete="name" required placeholder="Jordan Smith" />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="phone">Mobile phone <span class="req">*</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="(555) 123-4567" />
+          </div>
+          <div class="field">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" placeholder="Tell us a little about what you need…"></textarea>
+          </div>
+          <div class="consent">
+            <input id="consent" name="consent" type="checkbox" required />
+            <label for="consent">I agree to receive text messages from <strong>Andrew Gardner</strong> at the number provided about my inquiry (scheduling, confirmations, and follow-ups). Message frequency varies. Message &amp; data rates may apply. Reply <strong>STOP</strong> to unsubscribe or <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms &amp; Conditions</a>.</label>
+          </div>
+          <button class="submit" type="submit">Text me back →</button>
+          <p class="fineprint">We'll only use your number to reply to this request.</p>
+        </form>
+      </div>
+      <div class="ok-msg" id="okView">
+        <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="#16a34a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2>You're all set!</h2>
+        <p>Thanks — we've got your request and we'll text you back shortly at the number you provided.</p>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="info" id="how">
+      <h3>How it works</h3>
+      <div class="step"><div class="n">1</div><div><h4>Send your details</h4><p>Fill out the quick form with your name, number, and what you need.</p></div></div>
+      <div class="step"><div class="n">2</div><div><h4>We text you back</h4><p>You'll get a text from us to answer questions and sort out the details.</p></div></div>
+      <div class="step"><div class="n">3</div><div><h4>You're in control</h4><p>Reply STOP at any time to opt out, or HELP if you need assistance.</p></div></div>
+      <div class="callout">
+        <strong>Prefer to text first?</strong> You can also reach us directly at <strong>(910) 463-9837</strong>. By texting us, you agree to receive SMS replies about your inquiry. Msg &amp; data rates may apply.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot">
+    <div><span class="fb">Andrew Gardner</span> · Lehi, UT · <a href="mailto:riverkusmon@gmail.com">riverkusmon@gmail.com</a></div>
+    <div><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Conditions</a> &nbsp;·&nbsp; © 2026</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('leadForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!this.checkValidity()){ this.reportValidity(); return; }
+    document.getElementById('formView').style.display='none';
+    document.getElementById('okView').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
